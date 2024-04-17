@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: marts
+    database: analytics
+    schema: marts
+    tables:
+      - name: dim_address
+      - name: dim_credit_card
+      - name: dim_customer
+      - name: dim_date
+      - name: dim_order_status
+      - name: dim_product
+      - name: fact_sale
+      - name: fact_workorder

@@ -6,7 +6,7 @@ with salesorderheader as (
         shiptoaddressid,
         status as order_status,
         cast(orderdate as date) as orderdate
-    from {{ source('adventureworks_sales', 'salesorderheader') }}
+    from {{ source('sales', 'salesorderheader') }}
 ),
 
 salesorderdetail as (
@@ -17,7 +17,7 @@ salesorderdetail as (
         orderqty,
         unitprice,
         unitprice * orderqty as revenue
-    from {{ source('adventureworks_sales', 'salesorderdetail') }}
+    from {{ source('sales', 'salesorderdetail') }}
 )
 
 select

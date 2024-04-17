@@ -7,4 +7,7 @@ fivetran_instance = FivetranResource(
     api_secret=EnvVar("FIVETRAN_API_SECRET"),
 )
 
-fivetran_assets = load_assets_from_fivetran_instance(fivetran_instance, connector_to_group_fn=lambda _ : "fivetran")
+fivetran_assets = load_assets_from_fivetran_instance(
+    fivetran_instance, 
+    connector_to_group_fn=lambda _ : "fivetran",
+)

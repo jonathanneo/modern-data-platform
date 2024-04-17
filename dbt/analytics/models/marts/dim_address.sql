@@ -4,8 +4,8 @@ select
     address.city as city_name,
     stateprovince.name as state_name,
     countryregion.name as country_name
-from {{ source('adventureworks_person', 'address') }} as address
-left join {{ source('adventureworks_person', 'stateprovince') }} as stateprovince
+from {{ source('person', 'address') }} as address
+left join {{ source('person', 'stateprovince') }} as stateprovince
     on address.stateprovinceid = stateprovince.stateprovinceid
-left join {{ source('adventureworks_person', 'countryregion') }} as countryregion
+left join {{ source('person', 'countryregion') }} as countryregion
     on stateprovince.countryregioncode = countryregion.countryregioncode

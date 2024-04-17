@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: adventureworks_person
+  - name: person
     database: fivetran_adventureworks
     schema: person
     tables:
@@ -9,7 +9,7 @@ sources:
       - name: countryregion
       - name: person
       - name: stateprovince
-  - name: adventureworks_production
+  - name: production
     database: fivetran_adventureworks
     schema: production
     tables:
@@ -17,7 +17,7 @@ sources:
       - name: productcategory
       - name: productsubcategory
       - name: workorder
-  - name: adventureworks_sales
+  - name: sales
     database: fivetran_adventureworks
     schema: sales
     tables:

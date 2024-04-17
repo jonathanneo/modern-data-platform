@@ -9,4 +9,4 @@ select
     enddate,
     duedate,
     modifieddate
-from {{ source('adventureworks_production', 'workorder') }} as workorder
+from {{ source('production', 'workorder') }} as workorder

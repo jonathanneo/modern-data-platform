@@ -1,6 +1,6 @@
 with salesorderheader as (
     select distinct creditcardid
-    from {{ source('adventureworks_sales', 'salesorderheader') }}
+    from {{ source('sales', 'salesorderheader') }}
     where creditcardid is not null
 )
 
@@ -9,5 +9,5 @@ select
     salesorderheader.creditcardid,
     creditcard.cardtype
 from salesorderheader
-inner join {{ source('adventureworks_sales', 'creditcard') }} as creditcard
+inner join {{ source('sales', 'creditcard') }} as creditcard
     on salesorderheader.creditcardid = creditcard.creditcardid

@@ -7,8 +7,8 @@ select
     product.class,
     productsubcategory.name as product_subcategory_name,
     productcategory.name as product_category_name
-from {{ source('adventureworks_production', 'product') }} as product
-inner join {{ source('adventureworks_production', 'productsubcategory') }} as productsubcategory
+from {{ source('production', 'product') }} as product
+inner join {{ source('production', 'productsubcategory') }} as productsubcategory
     on product.productsubcategoryid = productsubcategory.productsubcategoryid
-inner join {{ source('adventureworks_production', 'productcategory') }} as productcategory
+inner join {{ source('production', 'productcategory') }} as productcategory
     on productsubcategory.productcategoryid = productcategory.productcategoryid

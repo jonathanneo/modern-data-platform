@@ -1,7 +1,7 @@
 with order_status as (
     select distinct status as order_status
     from
-        {{ source('adventureworks_sales', 'salesorderheader') }}
+        {{ source('sales', 'salesorderheader') }}
 )
 
 select
