@@ -8,6 +8,7 @@ setup(
         "dagster-cloud",
         "dagster-fivetran",
         "dagster-dbt",
+        "dagster-census",
     ],
     extras_require={"dev": ["dagster-webserver", "pytest"]},
 )
