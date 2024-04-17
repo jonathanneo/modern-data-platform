@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: fact_workorder
+    columns:
+      - name: workorder_key
+        description: The surrogate key of the workorder
+        tests:
+          - not_null
+          - unique
+      - name: product_key
+        description: The surrogate key to the product

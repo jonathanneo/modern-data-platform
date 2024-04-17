@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: adventureworks_person
+    database: fivetran_adventureworks
+    schema: person
+    tables:
+      - name: address
+      - name: countryregion
+      - name: person
+      - name: stateprovince
+  - name: adventureworks_production
+    database: fivetran_adventureworks
+    schema: production
+    tables:
+      - name: product
+      - name: productcategory
+      - name: productsubcategory
+      - name: workorder
+  - name: adventureworks_sales
+    database: fivetran_adventureworks
+    schema: sales
+    tables:
+      - name: creditcard
+      - name: customer
+      - name: salesorderdetail
+      - name: salesorderheader
+      - name: salesorderheadersalesreason
+      - name: salesreason
+      - name: store
