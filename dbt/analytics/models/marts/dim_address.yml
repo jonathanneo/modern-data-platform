@@ -7,9 +7,6 @@ models:
       This table provides detailed address data that can be used for joining with other fact tables (e.g., customer, order, or sales data)
       to enrich the analysis and enable geographical or location-based insights. 
     meta:
-      dagster:
-        auto_materialize_policy:
-          type: "lazy"
       canva:
         tags:
           public: false

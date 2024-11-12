@@ -66,8 +66,8 @@ dagster dev
     - If any of the above built-in policy types don't suffice for your use-case, you can create your own custom policies, see: https://docs.dagster.io/concepts/automation/declarative-automation/customizing-automation-conditions. The link contains building blocks to create an assortment of custom automation policies based on different conditions.
 4. Asset Catalog - comparable to the Atlan data catalog
     - Column metadata
-    - Owners
-    - Tags
+    - Owners (search catalog by owners)
+    - Tags (search catalog by tags)
     - Lineage
     - Execution history (++) - We don't have this information in Atlan. 
         - You can drill into all historical runs for a given asset.
