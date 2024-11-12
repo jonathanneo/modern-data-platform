@@ -74,8 +74,8 @@ dagster dev
 4. Partitions and backfills
     - Tracks partition state in an dagster internal database (postgresql).
     - Fires of either sequential or parallel sub-processes (or pods in k8s) for each partition. 
-        - Sequential: If your SQL logic is using `upsert` or `merge` or `delete+insert` statements with an incremental predicate using the target table's max date, then you'd want to sequentially process data. 
-        - Parallel: If your SQL logic is using `insert` statements without an incremental predicate, then you can insert data in parallel.
+        - Sequential (single-run): If your SQL logic is using `upsert` or `merge` or `delete+insert` statements with an incremental predicate using the target table's max date, then you'd want to sequentially process data. 
+        - Parallel (multi-run): If your SQL logic is using `insert` statements without an incremental predicate, then you can insert data in parallel.
 
 5. Create custom assets (e.g. Census)
     - We have plenty of use-cases that we don't have built-in asset connectors for e.g. Experiments, ML Pipelines, Census, etc. 

@@ -13,7 +13,6 @@ select
     scrappedqty,
     startdate,
     enddate,
-    duedate,
-    modifieddate
+    duedate
 from {{ source('production', 'workorder') }} as workorder
-where modifieddate >= '{{ var("start_date")}}' and modifieddate < '{{ var("end_date")}}'
+where startdate >= '{{ var("start_date")}}' and startdate < '{{ var("end_date")}}'

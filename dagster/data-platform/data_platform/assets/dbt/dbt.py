@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 
 from dagster_dbt import DbtCliResource
-from dagster import AssetExecutionContext, DailyPartitionsDefinition, OpExecutionContext
+from dagster import AssetExecutionContext, DailyPartitionsDefinition, OpExecutionContext, BackfillPolicy
 from dagster_dbt import DbtCliResource, dbt_assets
 from .dbt_translator import CustomDagsterDbtTranslator
 
@@ -57,6 +57,7 @@ dbt_web_events_manifest_path = (
 @dbt_assets(
     manifest=dbt_web_events_manifest_path,
     partitions_def=DailyPartitionsDefinition(start_date="2011-06-03", end_date="2011-12-21"),
+    backfill_policy=BackfillPolicy().multi_run(), # or .single_run()
     dagster_dbt_translator=CustomDagsterDbtTranslator(),
 )
 def dbt_web_events(context: OpExecutionContext, dbt_web_events_resource: DbtCliResource):
