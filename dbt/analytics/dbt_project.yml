@@ -36,6 +36,8 @@ models:
       group: dbt_analytics
       auto_materialize_policy:
         type: eager
+      owners: 
+        - jonathanneo@canva.com
   analytics:
     marts:
       +materialized: table

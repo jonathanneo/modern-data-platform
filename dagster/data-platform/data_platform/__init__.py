@@ -11,7 +11,7 @@ dbt_assets = load_assets_from_modules([dbt])
 census_assets = load_assets_from_modules([census])
 
 defs = Definitions(
-    assets=[*fivetran_assets, *dbt_assets, *census_assets],
+    assets=[*fivetran_assets, *dbt_assets, *census_assets], # 
     resources={
         "dbt_analytics_resource": dbt_analytics_resource,
         "dbt_reporting_resource": dbt_reporting_resource,
