@@ -5,8 +5,8 @@ from .assets.dbt import dbt
 from .assets.dbt.dbt import dbt_analytics_resource, dbt_reporting_resource, dbt_web_events_resource
 from .assets.census import census
 from .assets.census.census import configured_census_resource
-from .jobs import dbt_analytics_job
-from .schedules import dim_date_schedule, dbt_analytics_schedule
+from .jobs import fivetran_job, dbt_analytics_job, dbt_reporting_job, dbt_web_events_job, fivetran_analytics_reporting_job
+from .schedules import fivetran_schedule, dbt_analytics_schedule, dbt_reporting_schedule, dbt_web_events_schedule, dim_date_schedule, fivetran_analytics_reporting_schedule
 
 fivetran_assets = load_assets_from_modules([fivetran])
 dbt_assets = load_assets_from_modules([dbt])
@@ -20,6 +20,6 @@ defs = Definitions(
         "dbt_web_events_resource": dbt_web_events_resource,
         "census": configured_census_resource,
     },
-    jobs=[dbt_analytics_job],
-    schedules=[dim_date_schedule, dbt_analytics_schedule],
+    jobs=[fivetran_job, dbt_analytics_job, dbt_reporting_job, dbt_web_events_job, fivetran_analytics_reporting_job],
+    schedules=[fivetran_schedule, dbt_analytics_schedule, dbt_reporting_schedule, dbt_web_events_schedule, fivetran_analytics_reporting_schedule, dim_date_schedule],
 )

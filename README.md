@@ -1,6 +1,6 @@
 # modern-data-platform
 
-![](./modern-data-platform.drawio.png)
+![](./images/modern-data-platform.drawio.png)
 
 ## Set up 
 
@@ -47,7 +47,7 @@ dagster dev
     - Policies can be defined in the same place that Analytics Engineers and Data Scientist contribute code i.e. dbt projects. 
     - Built-in policy types:
         - Eager
-            - Let's see this in action. 
+            - Let's see this in action. !! Make sure to turn on `default_automation_condition_sensor`! 
                 ```YML
                 models:
                     +meta:
@@ -77,13 +77,15 @@ dagster dev
         - Sequential (single-run): If your SQL logic is using `upsert` or `merge` or `delete+insert` statements with an incremental predicate using the target table's max date, then you'd want to sequentially process data. 
         - Parallel (multi-run): If your SQL logic is using `insert` statements without an incremental predicate, then you can insert data in parallel.
 
-5. Create custom assets (e.g. Census)
+5. Combination of automation_condition and primitive methods for scheduling - Explicit Jobs and Job Schedule per dbt project (similar to Cronjobs, Airflow and Argo). They can both work together. 
+    - Different schedule cadences e.g. monthly, weekly, daily, hourly
+
+6. Create custom assets (e.g. Census)
     - We have plenty of use-cases that we don't have built-in asset connectors for e.g. Experiments, ML Pipelines, Census, etc. 
     - We can create our own custom asset connectors that read data from APIs or code locations, and create the necessary assets. 
 
 Everything else you'd expect from an orchestrator: 
 
-6. Automatic retries and continue from failed step: https://docs.dagster.io/deployment/run-retries
-7. Combination of automation_condition and primitive methods for scheduling - Explicit Jobs and Job Schedule per dbt project (similar to Cronjobs, Airflow and Argo). They can both work together. 
-    - Different schedule cadences e.g. monthly, weekly, daily, hourly
-8. Monitoring and alerting (run view) - compare that to dashboards we've built in Mode (already went through this)
+7. Automatic retries and continue from failed step: https://docs.dagster.io/deployment/run-retries
+8. Monitoring and slack alerting (run view) - compare that to dashboards we've built in Mode (already went through this)
+    ![slack-alert](./images/slack-alert.png)
