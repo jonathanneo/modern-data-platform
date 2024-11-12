@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: production
+    database: fivetran_adventureworks
+    schema: production
+    tables:
+      - name: workorder

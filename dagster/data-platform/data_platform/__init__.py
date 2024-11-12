@@ -2,7 +2,7 @@ from dagster import Definitions, load_assets_from_modules
 
 from .assets.fivetran import fivetran
 from .assets.dbt import dbt
-from .assets.dbt.dbt import dbt_analytics_resource, dbt_reporting_resource
+from .assets.dbt.dbt import dbt_analytics_resource, dbt_reporting_resource, dbt_web_events_resource
 from .assets.census import census
 from .assets.census.census import configured_census_resource
 from .jobs import dbt_analytics_job
@@ -17,6 +17,7 @@ defs = Definitions(
     resources={
         "dbt_analytics_resource": dbt_analytics_resource,
         "dbt_reporting_resource": dbt_reporting_resource,
+        "dbt_web_events_resource": dbt_web_events_resource,
         "census": configured_census_resource,
     },
     jobs=[dbt_analytics_job],
