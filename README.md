@@ -21,13 +21,7 @@ CENSUS_API_KEY=<TODO>
 
 # Run the app 
 
-If you only want to view asset lineage: 
-```
-cd dagster/data-platform
-dagster-webserver
-```
-
-Otherwise, to run dagster web-server with the scheduler, run: 
+Run dagster locally
 ```
 cd dagster/data-platform
 dagster dev
