@@ -21,13 +21,13 @@ CENSUS_API_KEY=<TODO>
 
 # Run the app 
 
-To prevent frequent code repository refresh (to not over-poll Fivetran)
+If you only want to view asset lineage: 
 ```
 cd dagster/data-platform
 dagster-webserver
 ```
 
-Otherwise, 
+Otherwise, to run dagster web-server with the scheduler, run: 
 ```
 cd dagster/data-platform
 dagster dev

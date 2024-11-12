@@ -15,4 +15,6 @@ configured_census_resource = census_resource.configured(
     compute_kind="census",
 )
 def sales_export(context):
-    context.resources.census.trigger_sync_and_poll(sync_id=780230)
+    # Census recently changed their Plans such that API calls now require a paid plan starting from $350 USD/month.
+    # context.resources.census.trigger_sync_and_poll(sync_id=780230)
+    print("mock succeed")
