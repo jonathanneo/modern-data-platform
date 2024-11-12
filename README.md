@@ -41,6 +41,7 @@ dagster dev
     - Dependencies are inferred using dbt's graph (source/ref).
     - Asset level dependencies, and not Project level dependencies. 
     - Compare this approach to Argo/Airflow approach. You have to explicitly define your upstream dependencies, and on the Project level. 
+    - Asset tests are displayed on each asset
 2. Create custom assets (e.g. Census)
     - We have plenty of use-cases that we don't have built-in asset connectors for e.g. Experiments, ML Pipelines, Census, etc. 
     - We can create our own custom asset connectors that read data from APIs or code locations, and create the necessary assets. 
@@ -50,10 +51,32 @@ dagster dev
     - Policy types:
         - Eager
             - Let's see this in action. 
+                ```YML
+                models:
+                    +meta:
+                        dagster:
+                        group: dbt_reporting
+                        auto_materialize_policy:
+                            type: "eager"
+                ```
             - What problem does it create? Over-syncing -- perhaps we don't need that table to be SUPER fresh. It's fine to have some delays in refreshing (i.e. allow for an evaluation period of 30 minutes). 
+        - on_cron
+        - on_missing
+        - See: https://docs.dagster.io/concepts/automation/declarative-automation#automation-conditions
+    - If any of the above common policy types don't suffice for your use-case, you can customise your own policies, see: https://docs.dagster.io/concepts/automation/declarative-automation/customizing-automation-conditions. These contains building blocks to create an assortment of custom automation policies. 
 
-Everything else you'd expect: 
-3. Retries and continue from failed step
-4. Partitions and backfills
-5. Different refresh cadences 
-6. Back to primitive methods for scheduling - Explicit Job Crons 
+Everything else you'd expect from an orchestrator: 
+
+4. Retries and continue from failed step
+5. Partitions and backfills
+6. Different refresh cadences 
+7. Back to primitive methods for scheduling - Explicit Job Crons 
+8. Monitoring and alerting (run view) - compare that to dashboards we've built in Mode
+9. Asset Catalog - comparable to the Atlan data catalog
+    - Column metadata
+    - Owners
+    - Tags
+    - Lineage
+    - Execution history (++) - We don't have this information in Atlan. 
+        - You can drill into all historical runs for a given asset.
+    - Execution runtime trend analysis (Plots) - Easily see spikes in runtime duration

@@ -35,7 +35,9 @@ models:
     dagster:
       group: dbt_reporting
       auto_materialize_policy:
-        type: eager
+        type: "eager"
+      owners: 
+        - "team:metrics-team"
   reporting:
     reports:
       +materialized: table
