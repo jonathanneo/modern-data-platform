@@ -2,9 +2,28 @@ version: 2
 
 models:
   - name: dim_date
-    columns:
+    description: |-
+      The dim_date table is a dimension table that stores detailed information about dates, providing a standardized, 
+      structured reference for temporal data. It is a key component of a star schema in data warehouses and is used to enable efficient 
+      time-based analysis, reporting, and aggregations. 
+      The dim_date table allows users to slice and dice data by various time attributes such as year, 
+      quarter, month, day, weekday, and fiscal periods, among others. This table plays a critical role in time-series analysis,
+      trend tracking, and seasonal reporting.
+    
+    meta:
+      dagster:
+        tags:
+          public: true
+          confidential: false
+          restricted_sensitive: false
+          restricted_personal: false
+          restricted_ugc: false
+          no_user_data: true
+          no_personal_identifiers: true
 
+    columns:
       - name: date_day
+        data_type: string
         description: The natural key of the date table
         tests:
           - not_null

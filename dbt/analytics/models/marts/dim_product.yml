@@ -2,18 +2,40 @@ version: 2
 
 models:
   - name: dim_product
+    description: |-
+      The dim_product table is a dimension table that stores detailed information about products offered by a business. 
+      It provides a structured, standardized reference for product-related data. 
+      This table allows for the analysis, reporting, and segmentation of data based on various product attributes, such as category, brand, price, and availability. 
+      It is essential for understanding product performance, inventory analysis, customer preferences, and sales trends.
+    
+    meta:
+      dagster:
+        tags:
+          public: false
+          confidential: true
+          restricted_sensitive: false
+          restricted_personal: false
+          restricted_ugc: false
+          no_user_data: true
+          no_personal_identifiers: true
+
     columns:
       - name: product_key
+        data_type: string
         description: The surrogate key of the product
         tests:
           - not_null
           - unique
+      
       - name: productid
+        data_type: string
         description: The natural key of the product
         tests:
           - not_null
           - unique
+      
       - name: product_name
+        data_type: string
         description: The product name
         tests:
           - not_null

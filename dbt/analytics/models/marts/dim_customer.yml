@@ -2,25 +2,47 @@ version: 2
 
 models:
   - name: dim_customer
+    description: |-
+      The dim_customer table is a dimension table that stores detailed information about customers. 
+      This table serves as the primary source for tracking customer attributes and is often used to enrich 
+      transaction or sales data in fact tables, enabling deep analysis and segmentation of customer behaviors.
+    
+    meta:
+      dagster:
+        tags:
+          public: false
+          confidential: true
+          restricted_sensitive: false
+          restricted_personal: false
+          restricted_ugc: false
+          no_user_data: false
+          no_personal_identifiers: false
+
     columns:
       - name: customer_key
+        data_type: string
         description: The surrogate key of the customer
         tests:
           - unique
           - not_null
 
       - name: customerid
+        data_type: string
         description: The natural key of the customer
         tests:
           - not_null
           - unique
 
       - name: fullname
+        data_type: string
         description: The customer name. Adopted as customer_fullname when person name is not null.
 
       - name: personbusinessentityid
+        data_type: string
 
       - name: storebusinessentityid
+        data_type: string
 
       - name: storename
+        data_type: string
         description: The store name.

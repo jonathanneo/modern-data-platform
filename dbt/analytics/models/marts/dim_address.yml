@@ -2,24 +2,45 @@ version: 2
 
 models:
   - name: dim_address
+    description: |-
+      The dim_address table is a dimension table that stores information related to physical addresses. 
+      This table provides detailed address data that can be used for joining with other fact tables (e.g., customer, order, or sales data)
+      to enrich the analysis and enable geographical or location-based insights. 
+    meta:
+      dagster:
+        auto_materialize_policy:
+          type: "lazy"
+        tags:
+          public: false
+          confidential: true
+          restricted_sensitive: false
+          restricted_personal: false
+          restricted_ugc: false
+          no_user_data: false
+          no_personal_identifiers: false
     columns:
       - name: address_key
         description: The surrogate key of the addressid
+        data_type: string
         tests:
           - not_null
           - unique
       
       - name: addressid
         description: The natural key
+        data_type: string
         tests:
           - not_null
           - unique
 
       - name: city_name
+        data_type: string
         description: The city name
 
       - name: state_name
+        data_type: string
         description: The state name
 
       - name: country_name
+        data_type: string
         description: The country name

@@ -2,15 +2,34 @@ version: 2
 
 models:
   - name: dim_order_status
+    description: |-
+      The dim_order_status table is a dimension table that stores information about the various statuses that an order can have throughout its lifecycle. 
+      The table can be used to categorize and track the progression of orders in systems such as e-commerce, retail, or order management systems. 
+      This table enables users to analyze order statuses, track fulfillment progress, and segment orders by their current state, 
+      helping businesses manage order fulfillment, shipping, customer service, and overall operational performance.
+    
+    meta:
+      dagster:
+        tags:
+          public: false
+          confidential: true
+          restricted_sensitive: false
+          restricted_personal: false
+          restricted_ugc: false
+          no_user_data: false
+          no_personal_identifiers: true
+    
     columns:
       - name: order_status_key
+        data_type: string
         description: The surrogate key of the order status
         tests:
           - unique
           - not_null
 
       - name: order_status
-        description: The natural key of the order status table
+        data_type: string
+        description: The status of the order e.g. in_process, approved, shipped, etc. 
         tests:
           - not_null
           - unique

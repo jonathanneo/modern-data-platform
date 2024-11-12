@@ -3,62 +3,84 @@ version: 2
 models:
   - name: fact_sale
     description: |-
-      This table provides a dataset of all sales. 
+      The fact_sale table is a fact table that stores transactional sales data. 
+      It provides detailed information about each sale and is used for reporting and analysis. 
+      Each row in the table represents a single sale or transaction.
 
-      **Grain:** Each row represents one sales order item.
+    meta:
+      dagster:
+        tags:
+          public: false
+          confidential: true
+          restricted_sensitive: false
+          restricted_personal: false
+          restricted_ugc: false
+          no_user_data: false
+          no_personal_identifiers: true
+
     columns:
-
       - name: sales_key
         description: The surrogate key of the fct sales
+        data_type: string
         tests:
           - not_null
           - unique
 
       - name: salesorderid
+        data_type: string
         description: The natural key of the saleorderheader
         tests:
           - not_null
 
       - name: salesorderdetailid
+        data_type: string
         description: The natural key of the salesorderdetail
         tests:
           - not_null
       
       - name: product_key
+        data_type: string
         description: The foreign key of the product
         tests:
           - not_null
 
       - name: customer_key
+        data_type: string
         description: The foreign key of the customer
         tests:
           - not_null 
       
       - name: ship_address_key
+        data_type: string
         description: The foreign key of the shipping address
         tests:
           - not_null
       
       - name: creditcard_key
+        data_type: string
         description: The foreign key of the creditcard. If no creditcard exists, it was assumed that purchase was made in cash.
         test:
           - not_null
 
       - name: order_status_key
+        data_type: string
         description: The foreign key of the order status 
         tests:
           - not_null  
 
       - name: unitprice
+        data_type: double
         description: The unit price of the product 
         tests:
           - not_null
 
       - name: orderqty
+        data_type: integer
         description: The quantity of the product 
         tests:
           - not_null
 
       - name: revenue
+        data_type: double
         description: The revenue obtained by multiplying unitprice and orderqty 
 

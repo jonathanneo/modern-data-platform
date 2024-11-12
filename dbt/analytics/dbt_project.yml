@@ -35,7 +35,7 @@ models:
     dagster:
       group: dbt_analytics
       auto_materialize_policy:
-        type: "lazy"
+        type: "eager"
       owners: 
         - "jonathanneo@canva.com"
         - "npreema@canva.com"

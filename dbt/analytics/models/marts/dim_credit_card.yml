@@ -2,17 +2,39 @@ version: 2
 
 models:
   - name: dim_credit_card
+    description: |-
+      The dim_credit_card table is a dimension table that stores information related to credit card details. 
+      The table provides a standardized and referenceable source of credit card data for analytical purposes. 
+      The table holds attributes related to individual credit card accounts, but it is designed with privacy and security considerations in mind, 
+      excluding sensitive or personally identifiable information (e.g., full credit card numbers).
+    
+    meta:
+      dagster:
+        tags:
+          public: false
+          confidential: true
+          restricted_sensitive: false
+          restricted_personal: false
+          restricted_ugc: false
+          no_user_data: false
+          no_personal_identifiers: true
+
     columns:
       - name: creditcard_key
+        data_type: string
         description: The surrogate key of the creditcard id
         tests:
           - not_null   
+      
       - name: creditcardid
+        data_type: string
         description: The natural key of the creditcard
         tests:
           - unique 
           - not_null 
+      
       - name: cardtype
+        data_type: string
         description: The card name
         tests:
           - not_null

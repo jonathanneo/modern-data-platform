@@ -47,8 +47,8 @@ dagster dev
     - We can create our own custom asset connectors that read data from APIs or code locations, and create the necessary assets. 
 3. Policy based scheduling
     - Uses Policies (aka conditions) to trigger asset refresh. 
-    - Policies are defined in the same place that Analytics Engineers and Data Scientist contribute code i.e. dbt projects. 
-    - Policy types:
+    - Policies can be defined in the same place that Analytics Engineers and Data Scientist contribute code i.e. dbt projects. 
+    - Built-in policy types:
         - Eager
             - Let's see this in action. 
                 ```YML
@@ -60,19 +60,11 @@ dagster dev
                             type: "eager"
                 ```
             - What problem does it create? Over-syncing -- perhaps we don't need that table to be SUPER fresh. It's fine to have some delays in refreshing (i.e. allow for an evaluation period of 30 minutes). 
-        - on_cron
+        - on_cron: Different schedule cadences e.g. monthly, weekly, daily, hourly
         - on_missing
         - See: https://docs.dagster.io/concepts/automation/declarative-automation#automation-conditions
-    - If any of the above common policy types don't suffice for your use-case, you can customise your own policies, see: https://docs.dagster.io/concepts/automation/declarative-automation/customizing-automation-conditions. These contains building blocks to create an assortment of custom automation policies. 
-
-Everything else you'd expect from an orchestrator: 
-
-4. Retries and continue from failed step
-5. Partitions and backfills
-6. Different refresh cadences 
-7. Back to primitive methods for scheduling - Explicit Job Crons 
-8. Monitoring and alerting (run view) - compare that to dashboards we've built in Mode
-9. Asset Catalog - comparable to the Atlan data catalog
+    - If any of the above built-in policy types don't suffice for your use-case, you can create your own custom policies, see: https://docs.dagster.io/concepts/automation/declarative-automation/customizing-automation-conditions. The link contains building blocks to create an assortment of custom automation policies based on different conditions.
+4. Asset Catalog - comparable to the Atlan data catalog
     - Column metadata
     - Owners
     - Tags
@@ -80,3 +72,13 @@ Everything else you'd expect from an orchestrator:
     - Execution history (++) - We don't have this information in Atlan. 
         - You can drill into all historical runs for a given asset.
     - Execution runtime trend analysis (Plots) - Easily see spikes in runtime duration
+
+Everything else you'd expect from an orchestrator: 
+
+5. Retries and continue from failed step
+6. Partitions and backfills
+    - Tracks partition state in an dagster internal database (postgresql).
+    - Fires of parallel sub-processes (or pods in k8s) for each partition. 
+7. Back to primitive methods for scheduling - Explicit Jobs and Job Schedule per dbt project (similar to Cronjobs, Airflow and Argo)
+    - Different schedule cadences e.g. monthly, weekly, daily, hourly
+8. Monitoring and alerting (run view) - compare that to dashboards we've built in Mode
