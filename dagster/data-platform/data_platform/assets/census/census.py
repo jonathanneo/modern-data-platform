@@ -12,7 +12,7 @@ configured_census_resource = census_resource.configured(
     deps=[AssetKey(["reports", "sales"])],
     required_resource_keys={"census"},
     auto_materialize_policy=AutoMaterializePolicy.eager(),
-    kinds={"s3","census"},
+    kinds={"salesforce","census"}, # https://docs.dagster.io/concepts/metadata-tags/kind-tags
 )
 def sales_export(context):
     # Census recently changed their Plans such that API calls now require a paid plan starting from $350 USD/month.
