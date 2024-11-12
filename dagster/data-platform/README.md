@@ -1,6 +1,4 @@
-# data_platform
-
-This is a [Dagster](https://dagster.io/) project scaffolded with [`dagster project scaffold`](https://docs.dagster.io/getting-started/create-new-project).
+# Data Platform Demo
 
 ## Getting started
 
