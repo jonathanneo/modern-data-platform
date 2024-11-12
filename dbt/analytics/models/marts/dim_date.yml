@@ -11,7 +11,7 @@ models:
       trend tracking, and seasonal reporting.
     
     meta:
-      dagster:
+      canva:
         tags:
           public: true
           confidential: false

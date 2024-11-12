@@ -8,7 +8,7 @@ models:
       Each row in the table represents a single sale or transaction.
 
     meta:
-      dagster:
+      canva:
         tags:
           public: false
           confidential: true

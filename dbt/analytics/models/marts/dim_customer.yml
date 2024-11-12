@@ -8,7 +8,7 @@ models:
       transaction or sales data in fact tables, enabling deep analysis and segmentation of customer behaviors.
     
     meta:
-      dagster:
+      canva:
         tags:
           public: false
           confidential: true

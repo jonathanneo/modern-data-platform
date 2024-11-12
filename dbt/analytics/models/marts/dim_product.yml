@@ -9,7 +9,7 @@ models:
       It is essential for understanding product performance, inventory analysis, customer preferences, and sales trends.
     
     meta:
-      dagster:
+      canva:
         tags:
           public: false
           confidential: true

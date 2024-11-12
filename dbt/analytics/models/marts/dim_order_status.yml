@@ -9,7 +9,7 @@ models:
       helping businesses manage order fulfillment, shipping, customer service, and overall operational performance.
     
     meta:
-      dagster:
+      canva:
         tags:
           public: false
           confidential: true

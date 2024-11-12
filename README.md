@@ -71,7 +71,9 @@ dagster dev
     - Lineage
     - Execution history (++) - We don't have this information in Atlan. 
         - You can drill into all historical runs for a given asset.
+        - (We don't need to build this in Mode!)
     - Execution runtime trend analysis (Plots) - Easily see spikes in runtime duration
+        - (We don't need to build this in Mode!)
 
 Everything else you'd expect from an orchestrator: 
 
@@ -81,4 +83,4 @@ Everything else you'd expect from an orchestrator:
     - Fires of parallel sub-processes (or pods in k8s) for each partition. 
 7. Back to primitive methods for scheduling - Explicit Jobs and Job Schedule per dbt project (similar to Cronjobs, Airflow and Argo)
     - Different schedule cadences e.g. monthly, weekly, daily, hourly
-8. Monitoring and alerting (run view) - compare that to dashboards we've built in Mode
+8. Monitoring and alerting (run view) - compare that to dashboards we've built in Mode (already went through this)

@@ -10,6 +10,7 @@ models:
       dagster:
         auto_materialize_policy:
           type: "lazy"
+      canva:
         tags:
           public: false
           confidential: true

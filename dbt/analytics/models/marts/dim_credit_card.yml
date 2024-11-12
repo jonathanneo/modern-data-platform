@@ -9,7 +9,7 @@ models:
       excluding sensitive or personally identifiable information (e.g., full credit card numbers).
     
     meta:
-      dagster:
+      canva:
         tags:
           public: false
           confidential: true
